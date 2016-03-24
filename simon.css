@@ -1,0 +1,215 @@
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+
+body {
+	background-color: #F2F2F2;
+}
+
+.clear {
+	clear: both;
+}
+
+#simon {
+	width: 35em;
+	height: 35em;
+	border-radius: 50%;
+	margin: 0 auto;
+	color: white;
+	background-color: #121212;
+	position: relative;
+}
+
+#simon button {
+	border: none;
+}
+
+#simon button:focus {
+	outline: none;
+}
+
+#simonMenuBox {
+	width: 50%;
+	height: 50%;
+	border-radius: 50%;
+	background-color: #121212;
+	position: absolute;
+	left: 25%;
+	top:  25%;
+	z-index: 2;
+}
+
+#title {
+	font-family: 'Squada One', cursive;
+	font-size: 5em;
+	text-align: center;
+	color: #CFD0D6;
+	position: relative;
+	top: 10%;
+}
+
+/* MENU */
+
+#menu {
+	height: 25%;
+	width: 70%;
+	margin: 0 auto;
+}
+
+#menu p {
+	font-size: 0.7em;
+	text-align: center;
+}
+
+#levelBox {
+	height: 100%;
+	width: 40%;
+	float: left;
+}
+
+#levelDisplay {
+	width: 100%;
+	height: 80%;
+	margin-bottom: 3%;
+	padding: 0;
+	border: 0.3em solid #222222;
+	border-radius: 20%;
+	background-color: #454F2E;
+	text-align: center;
+}
+
+#levelDisplay p {
+	color: #121212;
+	font-size: 1.9em;
+}
+
+.circleBox {
+	display: inline-block;
+	height: 80%;
+	width: 30%;
+}
+
+.circleButton {
+	display: block;
+	position: relative;
+	width: 50%;
+	height: 52%;
+	border-radius: 50%;
+	margin: 25% auto;
+}
+
+.circleButton:active {
+	top: 0.1em;
+}
+
+#startBox {
+	float: left;
+}
+
+/* ON/OFF SWITCH BUTTON */
+
+#switch {
+	font-family: 'Squada One', cursive;
+	width: 35%;
+	height: 8%;
+	margin: 0 auto;
+	position: relative;
+	left: 1.5%;
+	position: relative;
+	top: 10%;
+}
+
+#switch p {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+
+#switchButton {
+	height: 100%;
+	width: 50%;
+	margin: 0 6%;
+	padding: 3%;
+	border: none;
+	border-radius: 10%;
+	background-color: #EAE5EC;
+}
+
+#switchToggle {
+	display: inline-block;
+	height: 100%;
+	width: 50%;
+	border-radius: 20%;
+	background-color: #2E8ADB;
+	float: right;
+}
+
+/* GAME BUTTONS */
+
+.gameButton {
+	display: inline-block;
+	width: 44%;
+	height: 44%;
+	margin-left: 4%;
+	margin-top: 4%;
+}
+
+#buttonTopLeft {
+	background-color: #19956C;
+	border-radius: 100% 0 0 0;
+}
+
+#buttonTopRight {
+	background-color: #DC3C31;
+	border-radius: 0 100% 0 0;
+}
+
+#buttonBottomLeft {
+	background-color: #F8C319;
+	border-radius: 0 0 0 100%;
+}
+
+#buttonBottomRight {
+	background-color: #2978C4;
+	border-radius: 0 0 100% 0;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 767px), screen and (max-height: 767px) {
+	#simon {
+		width: 25em;
+		height: 25em;
+		top: 5em;
+	}
+
+	#title {
+		font-size: 4em;
+	}
+
+	#menu {
+		font-size: 0.8em;
+	}
+
+	#switch p {
+		font-size: 0.7em;
+	}
+
+}
+
+@media screen and (max-width: 480px), screen and (max-height: 480px) {
+	#simon {
+		width: 20em;
+		height: 20em;
+	}
+
+	#title {
+		font-size: 3em;
+	}
+
+	#menu {
+		font-size: 0.6em;
+	}
+
+	#switch p {
+		font-size: 0.6em;
+	}
+}
