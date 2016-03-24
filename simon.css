@@ -172,6 +172,20 @@ body {
 	border-radius: 0 0 100% 0;
 }
 
+/* Credits */
+
+#credit {
+	color: #D6D6D6;
+}
+
+#credit a {
+	color: #D6D6D6;
+}
+
+#credit a:hover {
+	color: white;
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 767px), screen and (max-height: 767px) {
@@ -193,6 +207,10 @@ body {
 		font-size: 0.7em;
 	}
 
+	#credit {
+		font-size: 0.7em;
+	}
+
 }
 
 @media screen and (max-width: 480px), screen and (max-height: 480px) {
@@ -211,5 +229,10 @@ body {
 
 	#switch p {
 		font-size: 0.6em;
+	}
+
+	#credit {
+		font-size: 0.4em;
+		margin-top: 0.5em;
 	}
 }
