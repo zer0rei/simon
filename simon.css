@@ -40,10 +40,12 @@ body {
 #title {
 	font-family: 'Squada One', cursive;
 	font-size: 5em;
-	text-align: center;
 	color: #CFD0D6;
+	width: 90%;
+	border-radius: 50%;
 	position: relative;
 	top: 10%;
+	left: 5%;
 }
 
 /* MENU */
@@ -52,6 +54,7 @@ body {
 	height: 25%;
 	width: 70%;
 	margin: 0 auto;
+	position: relative;
 }
 
 #menu p {
@@ -152,22 +155,22 @@ body {
 	margin-top: 4%;
 }
 
-#buttonTopLeft {
+#button1 {
 	background-color: #19956C;
 	border-radius: 100% 0 0 0;
 }
 
-#buttonTopRight {
+#button2 {
 	background-color: #DC3C31;
 	border-radius: 0 100% 0 0;
 }
 
-#buttonBottomLeft {
+#button3 {
 	background-color: #F8C319;
 	border-radius: 0 0 0 100%;
 }
 
-#buttonBottomRight {
+#button4 {
 	background-color: #2978C4;
 	border-radius: 0 0 100% 0;
 }
@@ -176,6 +179,7 @@ body {
 
 #credit {
 	color: #D6D6D6;
+	opacity: 0.8;
 }
 
 #credit a {
@@ -201,6 +205,11 @@ body {
 
 	#menu {
 		font-size: 0.8em;
+		top: -3%;
+	}
+
+	#switch {
+		top: 5%;
 	}
 
 	#switch p {
