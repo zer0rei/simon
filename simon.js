@@ -105,9 +105,8 @@ Simon.prototype.playLevel = function(level) {
 
 	// Wrong play
 	function clickedWrongButton() {
-		that.gameButton.off("click");
 		setTimeout(function() {
-			that.levelDisplay.html("X");
+			that.levelDisplay.html("<span class='glyphicon glyphicon-thumbs-down'></span>");
 			setTimeout(function() {
 				if (that.isStrict) {
 					clearInterval(gameStopInterval);
@@ -132,14 +131,17 @@ Simon.prototype.playLevel = function(level) {
 
 	// Reset if no clicks in 4 seconds
 	var playTimeLimit = setTimeout(function() {
+		that.gameButton.off("click");
 		clickedWrongButton();
 	}, 4000);
 
 	// if clicked
 	var numClicks = 0;
-	this.gameButton.click(function() {
+	// Click event handler
+	function gameButtonClicked() {
 		// Clicked
 		numClicks++;
+		that.gameButton.off("click");
 
 		// Stop the time limit timer
 		clearTimeout(playTimeLimit);
@@ -162,7 +164,6 @@ Simon.prototype.playLevel = function(level) {
 
 		// If Played the whole sequence right
 		if (numClicks === level) {
-			that.gameButton.off("click");
 			setTimeout(function() {
 				clearTimeout(playTimeLimit);
 				clearInterval(gameStopInterval);
@@ -172,14 +173,23 @@ Simon.prototype.playLevel = function(level) {
 					that.previewLevel(level + 1);
 			}, 500);
 		}
-	});
+		else {
+			setTimeout(function() {
+				that.gameButton.one("click", gameButtonClicked);
+			}, 500);
+		}
+	}
+
+	// First click
+	this.gameButton.one("click", gameButtonClicked);
+
 };
 
 // Celebration
 // // // // //
 
 Simon.prototype.celebrate = function() {
-	this.levelDisplay.html("$$");
+	this.levelDisplay.html("<span class='glyphicon glyphicon-thumbs-up'></span>");
 	this.lightsOn();
 };
 
@@ -187,9 +197,15 @@ Simon.prototype.celebrate = function() {
 // // // // // //
 
 $(document).ready(function() {
+
+	// Layout
+	// // //
 	$(window).resize(function() {
 		var simonTop = ($(window).height() - $("#simon").height()) / 2;
 		$("#simon").css("top", simonTop);
+
+		// Circle button height
+		$(".circleBox").css("height", $(".circleBox").width());
 	});
 
 	// Call resize to center simon
@@ -216,16 +232,19 @@ $(document).ready(function() {
 	var lightColorArray = [lightGreen, lightRed, lightYellow, lightBlue];
 
 	// Start and Strict buttons
-	var lightStart = "#25FF06",
-		lightStrict = "#F3FF0F";
+	var startColor = "#4EAD4A",
+		strictColor = "#EB9D3E",
+		lightStartColor = "#25FF06",
+		lightStrictColor = "#F3FF0F";
 
 	// Lights On/Off
 	function lightsOn(buttonIndex) {
 		if (arguments.length === 0)
 			for (var i = 0; i < 4; i++)
 				$(buttonsArray[i]).css("background-color", lightColorArray[i]);
-		else
+		else {
 			$(buttonsArray[buttonIndex]).css("background-color", lightColorArray[buttonIndex]);
+		}
 	}
 
 	function lightsOff() {
@@ -281,7 +300,7 @@ $(document).ready(function() {
 				}
 				else {
 					gameStarted = true;
-					$(this).css("background-color", lightStart);
+					$(this).css("background-color", lightStartColor);
 					game.start();
 				}
 			});
@@ -292,13 +311,13 @@ $(document).ready(function() {
 					strictOn = false;
 					if (typeof game !== "undefined")
 						game.setStrict(strictOn);
-					$(this).removeAttr("style");
+					$(this).css("background-color", strictColor);
 				}
 				else {
 					strictOn = true;
 					if (typeof game !== "undefined")
 						game.setStrict(strictOn);
-					$(this).css("background-color", lightStrict);
+					$(this).css("background-color", lightStrictColor);
 				}
 			});
 		}
@@ -314,7 +333,8 @@ $(document).ready(function() {
 				$("#levelDisplay p").html("--");
 			}, 200);
 			$(this).children("#switchToggle").css("float", "right");
-			$("#startButton, #strictButton").removeAttr("style");
+			$("#startButton").css("background-color", startColor);
+			$("#strictButton").css("background-color", strictColor);
 			$("#startButton, #strictButton").off();
 		}
 

@@ -82,19 +82,20 @@ body {
 #levelDisplay p {
 	color: #121212;
 	font-size: 1.9em;
+	margin-top: 0.1em;
 }
 
 .circleBox {
 	display: inline-block;
-	height: 80%;
 	width: 30%;
+	/* height = width (javascript) */
 }
 
 .circleButton {
 	display: block;
 	position: relative;
+	height: 50%;
 	width: 50%;
-	height: 52%;
 	border-radius: 50%;
 	margin: 25% auto;
 }
@@ -105,6 +106,14 @@ body {
 
 #startBox {
 	float: left;
+}
+
+#startButton {
+	background-color: #4EAD4A;
+}
+
+#strictButton {
+	background-color: #EB9D3E;
 }
 
 /* ON/OFF SWITCH BUTTON */
@@ -206,6 +215,10 @@ body {
 	#menu {
 		font-size: 0.8em;
 		top: -3%;
+	}
+
+	#levelDisplay p {
+		margin-top: 0.04em;
 	}
 
 	#switch {
