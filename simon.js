@@ -211,6 +211,22 @@ $(document).ready(function() {
 	// Call resize to center simon
 	$(window).resize();
 
+	// Audio
+	// // //
+
+	ion.sound({
+		sounds: [
+			{ name: "simonSound1" },
+			{ name: "simonSound2" },
+			{ name: "simonSound3" },
+			{ name: "simonSound4" }
+		],
+
+		path: "includes/sounds/",
+		preload: true
+	});
+
+
 	// SIMON LOGIC
 	// // // // //
 
@@ -243,6 +259,7 @@ $(document).ready(function() {
 			for (var i = 0; i < 4; i++)
 				$(buttonsArray[i]).css("background-color", lightColorArray[i]);
 		else {
+			ion.sound.play("simonSound" + (buttonIndex + 1));
 			$(buttonsArray[buttonIndex]).css("background-color", lightColorArray[buttonIndex]);
 		}
 	}
