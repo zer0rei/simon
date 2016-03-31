@@ -133,7 +133,7 @@ Simon.prototype.playLevel = function(level) {
 	var playTimeLimit = setTimeout(function() {
 		that.gameButton.off("click");
 		clickedWrongButton();
-	}, 4000);
+	}, 4000 + (level * 250));
 
 	// if clicked
 	var numClicks = 0;
@@ -148,7 +148,7 @@ Simon.prototype.playLevel = function(level) {
 		// Start another timer
 		playTimeLimit = setTimeout(function() {
 			clickedWrongButton();
-		}, 4000);
+		}, 4000 + (level * 250));
 
 		// Lights
 		var index = Number(this.id.replace(/^\D+/g, "")) - 1;
@@ -223,9 +223,9 @@ $(document).ready(function() {
 		],
 
 		path: "includes/sounds/",
-		preload: true
+		preload: true,
+		multiplay: true
 	});
-
 
 	// SIMON LOGIC
 	// // // // //
@@ -259,7 +259,9 @@ $(document).ready(function() {
 			for (var i = 0; i < 4; i++)
 				$(buttonsArray[i]).css("background-color", lightColorArray[i]);
 		else {
-			ion.sound.play("simonSound" + (buttonIndex + 1));
+			// Play sound
+			ion.sound.play("simonSound" + (buttonIndex + 1), { volume: 0.9 });
+			// Lights on
 			$(buttonsArray[buttonIndex]).css("background-color", lightColorArray[buttonIndex]);
 		}
 	}
@@ -304,6 +306,10 @@ $(document).ready(function() {
 	$("#switchButton").click(function() {
 		if (!switchedOn) {
 			switchedOn = true;
+
+			// Preloading on click for ios devices
+			ion.sound.play("simonSound1", { volume: 0 });
+
 			$(this).children("#switchToggle").css("float", "left");
 			colorSwirl(2);
 
