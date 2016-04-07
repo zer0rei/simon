@@ -235,7 +235,7 @@ $(document).ready(function() {
 
 	// Normal colors
 	var green = "#19956C",
-		red = "#DC3C31",
+		red = "#BF3C31",
 		yellow = "#F8C319",
 		blue = "#2978C4";
 	var colorArray = [green, red, yellow, blue];
